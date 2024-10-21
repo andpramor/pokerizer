@@ -1,0 +1,48 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'); /* Bootstrap icons CDN */
+
+:root {
+  --hovered-link: blue;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  font-size: 17px;
+
+  scroll-behavior: smooth;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: hsla(185, 0%, 100%, 1);
+  background-image: radial-gradient(
+      circle at 91% 11%,
+      hsla(66, 100%, 88%, 0.66) 4.038772213247173%,
+      transparent 37.2265767974114%
+    ),
+    radial-gradient(
+      circle at 66% 37%,
+      hsla(16, 100%, 88%, 1) 0%,
+      transparent 63.33640956108327%
+    ),
+    radial-gradient(
+      circle at 36% 87%,
+      hsla(321, 100%, 88%, 1) 12.107536057085522%,
+      transparent 63.33640956108327%
+    );
+  background-blend-mode: normal, normal, normal;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  max-width: 1280px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
