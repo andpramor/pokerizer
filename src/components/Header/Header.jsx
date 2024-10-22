@@ -1,23 +1,25 @@
 import './Header.css'
 import favicon from '../../../favicon.png'
 
+import { Link } from 'react-router-dom'
+
 export const Header = () => {
   return (
     <header className='header'>
       <nav aria-label='Main navigation'>
         <ul className='header-links'>
           <li>
-            <a href='/pokerizer/'>
+            <Link to='/' >
               <img
                 src={favicon}
                 alt='Pokerizer logo'
                 className='pokerizer-logo'
               />
               HOME
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='/pokerizer/about'>ABOUT</a>
+            <Link to='/about'>ABOUT</Link>
           </li>
         </ul>
       </nav>
