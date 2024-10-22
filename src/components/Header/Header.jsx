@@ -19,6 +19,9 @@ export const Header = () => {
             </Link>
           </li>
           <li>
+            <Link to='/randomPokemon'>Random Pokémon</Link>
+          </li>
+          <li>
             <Link to='/about'>ABOUT</Link>
           </li>
         </ul>

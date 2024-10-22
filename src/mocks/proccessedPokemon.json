@@ -1,0 +1,34 @@
+{
+  "proccessedPokemon": {
+    "name": "dragonite",
+    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/149.png",
+    "sprite_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/149.png",
+    "stats": [
+      {
+        "base": 91,
+        "name": "hp"
+      },
+      {
+        "base": 134,
+        "name": "attack"
+      },
+      {
+        "base": 95,
+        "name": "defense"
+      },
+      {
+        "base": 100,
+        "name": "special-attack"
+      },
+      {
+        "base": 100,
+        "name": "special-defense"
+      },
+      {
+        "base": 80,
+        "name": "speed"
+      }
+    ],
+    "types": ["dragon", "flying"]
+  }
+}
