@@ -1,4 +1,5 @@
 import './Header.css'
+import favicon from '../../../favicon.png'
 
 export const Header = () => {
   return (
@@ -6,9 +7,9 @@ export const Header = () => {
       <nav aria-label='Main navigation'>
         <ul className='header-links'>
           <li>
-            <a href='/'>
+            <a href='/pokerizer/'>
               <img
-                src='../../../favicon.png'
+                src={favicon}
                 alt='Pokerizer logo'
                 className='pokerizer-logo'
               />
@@ -16,7 +17,7 @@ export const Header = () => {
             </a>
           </li>
           <li>
-            <a href='/about'>ABOUT</a>
+            <a href='/pokerizer/about'>ABOUT</a>
           </li>
         </ul>
       </nav>

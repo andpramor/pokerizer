@@ -5,7 +5,7 @@
 In this project, I use the PokeAPI to fetch Pokémon data to build teams, favourites lists, etc. I'm developing this webapp as an educational project to help me learn react's ins and outs.
 
 ## User stories
-- [ ] Include react router dom for SPA navigation
+- [x] Include react router dom for SPA navigation
 - [ ] Get a random pokémon
 - [ ] Search for an specific pokémon
 - [ ] Search for an specific pokémon after filtering by type

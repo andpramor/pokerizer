@@ -1,0 +1,10 @@
+.error404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.error404 p + p {
+  font-style: italic;
+  color: grey;
+}
