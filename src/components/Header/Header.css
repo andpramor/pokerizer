@@ -30,6 +30,9 @@
   align-items: center;
   gap: 1rem;
 }
+.user-links .user-profile-pic {
+  height: 4rem;
+}
 
 .header a {
   display: flex;
