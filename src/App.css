@@ -1,12 +1,6 @@
 .app {
   min-height: 100dvh;
   display: grid;
-  grid-template-rows: 4.5rem 1fr 4rem;
+  grid-template-rows: auto 1fr auto;
   gap: 0.5rem;
-}
-
-@media screen and (min-width: 768px) {
-  .app {
-    grid-template-rows: 4.5rem 1fr 2rem;
-  }
 }
