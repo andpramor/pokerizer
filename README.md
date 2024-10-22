@@ -7,7 +7,7 @@ In this project, I use the PokeAPI to fetch Pokémon data to build teams, favour
 ## User stories
 - [x] Include react router dom for SPA navigation
 - [ ] Handle default route (404 error)
-- [ ] Get a random pokémon
+- [x] Get a random pokémon
 - [ ] Search for an specific pokémon
 - [ ] Search for an specific pokémon after filtering by type
 - [ ] Get a random pokémon with an specific type
