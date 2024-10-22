@@ -1,4 +1,7 @@
-import { AVAILABLE_NUMBER_OF_POKEMON, POKEMON_BY_ID_ENDPOINT } from './constants.js'
+import {
+  AVAILABLE_NUMBER_OF_POKEMON,
+  POKEMON_BY_ID_ENDPOINT
+} from './constants.js'
 
 const getRandomPokemonNumber = () => {
   return Math.floor(Math.random() * AVAILABLE_NUMBER_OF_POKEMON) + 1
@@ -34,24 +37,20 @@ export const getPokemonById = async (id) => {
           ]
         }
         return missingno
-      } else {
-        throw new Error('Failed to fetch Pokémon data')
       }
+      throw new Error('Failed to fetch Pokémon data')
     }
 
     const data = await response.json()
 
     const { name, sprites, types, stats } = data
 
-    const newTypes = []
-    types.forEach((type) => {
-      newTypes.push(type.type.name)
-    })
+    const newTypes = types.map((type) => type.type.name)
 
-    const newStats = []
-    stats.forEach((stat) => {
-      newStats.push({ name: stat.stat.name, base: stat.base_stat })
-    })
+    const newStats = stats.map((stat) => ({
+      name: stat.stat.name,
+      base: stat.base_stat
+    }))
 
     // const newMoves = []
     // getRandomMovePool(moves).then(moves => {
@@ -75,5 +74,3 @@ export const getPokemonById = async (id) => {
     throw error
   }
 }
-
-

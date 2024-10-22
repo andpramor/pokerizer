@@ -12,8 +12,12 @@ export const RandomCard = () => {
   })
 
   useEffect(() => {
-    getRandomPokemon().then((pokemon) => setPokemon(pokemon))
+    const fetchPokemon = async () => {
+      const fetchedPokemon = await getRandomPokemon()
+      setPokemon(fetchedPokemon)
+    }
+    fetchPokemon()
   }, [])
 
-  return <PortraitCard pokemon={pokemon} shiny />
+  return <PortraitCard pokemon={pokemon} />
 }
