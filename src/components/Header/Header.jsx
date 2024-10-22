@@ -16,7 +16,6 @@ export const Header = () => {
                 alt='Pokerizer logo'
                 className='pokerizer-logo'
               />
-              HOME
             </Link>
           </li>
           <li>
@@ -26,22 +25,21 @@ export const Header = () => {
       </nav>
       <nav aria-label='User related navigation'>
         <ul className='user-links'>
-          <li style={{display: 'none'}}>
-            <a href=''>Log in / out</a>
+          <li style={{ display: 'none' }}>
+            <Link to='/login'>Log in/out</Link>
           </li>
-          <li style={{display: 'none'}}>
-            <a href=''>Sign up</a>
+          <li style={{ display: 'none' }}>
+            <Link to='/singup'>Sign up</Link>
           </li>
-          <li style={{display: 'none'}}>
-            <a href='/profile'>
-              <i className='bi bi-person-circle' /> Profile
-            </a>
+          <li>
+            <Link to='/profile'>
+              <img
+                src={userPlaceholder}
+                alt='User profile picture'
+                className='user-profile-pic'
+              />
+            </Link>
           </li>
-          <img
-            src={userPlaceholder}
-            alt='User profile picture'
-            className='user-profile-pic'
-          />
         </ul>
       </nav>
     </header>

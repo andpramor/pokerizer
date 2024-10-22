@@ -8,8 +8,8 @@
   gap: 1rem;
 }
 
-.header .pokerizer-logo {
-  width: 1.25rem;
+.header-links .pokerizer-logo {
+  width: 3rem;
   height: auto;
 }
 
@@ -43,9 +43,15 @@
   font-weight: bold;
   color: black;
   border-radius: 0.5rem;
-  transition: color 0.3s, box-shadow 0.3s;
+  transition: color 0.3s, box-shadow 0.3s, filter 0.3s;
 }
 .header a:hover {
   color: var(--hovered-link);
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header a:has(.pokerizer-logo):hover,
+.header a:has(.user-profile-pic):hover {
+  box-shadow: none;
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.2));
 }
