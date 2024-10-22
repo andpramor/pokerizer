@@ -1,0 +1,41 @@
+body {
+  min-height: 100dvh;
+  background-color: #002d3c;
+  color: white;
+  display: grid;
+  grid-template-rows: 1fr 10%;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h1 {
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+h2 {
+  font-size: large;
+  font-weight: bold;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hiddenLanguage {
+  display: none;
+}
