@@ -1,0 +1,11 @@
+.randomCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.randomCard-interaction {
+  display: flex;
+  gap: 1rem;
+}

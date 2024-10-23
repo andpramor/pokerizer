@@ -11,13 +11,13 @@ export const getRandomPokemon = async () => {
   return await getPokemonById(getRandomPokemonNumber())
 }
 
-export const getPokemonById = async (id) => {
+export const getPokemonById = async (pokemonId) => {
   try {
-    if (Number(String(id).charAt(0)) === 0) {
-      id = id.slice(1) // Accept 01 = 1, instead of 01 = Missingno.
+    if (Number(String(pokemonId).charAt(0)) === 0) {
+      pokemonId = pokemonId.slice(1) // Accept 01 = 1, instead of 01 = Missingno.
     }
 
-    const response = await fetch(`${POKEMON_BY_ID_ENDPOINT}${id}`)
+    const response = await fetch(`${POKEMON_BY_ID_ENDPOINT}${pokemonId}`)
 
     if (!response.ok) {
       if (response.status === 404) {
@@ -43,7 +43,7 @@ export const getPokemonById = async (id) => {
 
     const data = await response.json()
 
-    const { name, sprites, types, stats } = data
+    const { id, name, sprites, types, stats } = data
 
     const newTypes = types.map((type) => type.type.name)
 
@@ -60,6 +60,7 @@ export const getPokemonById = async (id) => {
     // })
 
     const newPokemon = {
+      id,
       name: name.charAt(0).toUpperCase() + name.slice(1),
       // sprite: sprites.front_default,
       sprite: sprites.other['official-artwork'].front_default,

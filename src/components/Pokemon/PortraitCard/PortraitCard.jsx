@@ -2,7 +2,10 @@ import './PortraitCard.css'
 
 import { Type } from '../Type/Type.jsx'
 
-export const PortraitCard = ( {pokemon: {name, sprite, sprite_shiny, stats, types}, shiny = false}) => {
+export const PortraitCard = ({
+  pokemon: { id, name, sprite, sprite_shiny, stats, types },
+  shiny = false
+}) => {
   return (
     <>
       {name && (
@@ -13,18 +16,14 @@ export const PortraitCard = ( {pokemon: {name, sprite, sprite_shiny, stats, type
             }`}
           >
             <section className='portraitCard-front'>
-              <h2 translate='no'>{name}</h2>
+              <h2 translate='no'>
+                {id} {name}
+              </h2>
               <div className='portraitCard-sprite'>
                 {shiny ? (
-                  <img
-                    src={sprite_shiny}
-                    alt={`${name}'s front sprite`}
-                  />
+                  <img src={sprite_shiny} alt={`${name}'s front sprite`} />
                 ) : (
-                  <img
-                    src={sprite}
-                    alt={`${name}'s front sprite`}
-                  />
+                  <img src={sprite} alt={`${name}'s front sprite`} />
                 )}
               </div>
               <section className='portraitCard-types'>
@@ -40,11 +39,9 @@ export const PortraitCard = ( {pokemon: {name, sprite, sprite_shiny, stats, type
               </header>
               {stats && (
                 <ul className='portraitCard-statsList'>
-                  {stats.map(({base, name}) => (
+                  {stats.map(({ base, name }) => (
                     <li key={name} className='portraitCard-stat'>
-                      <span>
-                        {name.toUpperCase()}
-                      </span>
+                      <span>{name.toUpperCase()}</span>
                       <span>{base}</span>
                     </li>
                   ))}
