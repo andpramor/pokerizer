@@ -1,0 +1,86 @@
+.search {
+  position: relative;
+}
+
+.search input[type='text'] {
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  background-color: transparent;
+  width: 10rem;
+  height: 1rem;
+  transition: border 0.3s, box-shadow 0.3s, width 0.3s;
+}
+.search input[type='text']:hover {
+  border: 1px solid var(--hovered-link);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.search input[type='text']:focus {
+  width: 20rem;
+  outline: 1px solid var(--hovered-link);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.search input[type='text']:active {
+  width: 20rem;
+  outline: 1px solid var(--hovered-link);
+}
+
+.searchResults {
+  height: 0;
+  padding: 0;
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow-y: scroll;
+  list-style: none;
+  position: absolute;
+  top: 2.5rem;
+  transition: height 0.3s;
+}
+.searchResults.searchResults_visible {
+  height: 10rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.searchResults li {
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.searchResults li:hover {
+  background-color: var(--hovered-link);
+  color: white;
+}
+
+.searchResult-id::before {
+  content: '#';
+}
+
+/* Scrollbar */
+
+.searchResults {
+  --sb-track-color: transparent;
+  --sb-thumb-color: var(--hovered-link);
+  --sb-size: 8px;
+}
+
+.searchResults::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.searchResults::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+.searchResults::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .searchResults {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}

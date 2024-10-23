@@ -14,9 +14,9 @@ export const usePokemonList = () => {
         const { results } = data
         const newPokemonList = results.map((pokemon) => {
           const pokemonId = pokemon.url.match(/\/(\d+)\/$/)[1] // The id is surrounded by slashes at the end of the url attribute of the pokemon object in the API response
-          const id = pokemonId.padStart(2, '0') // Pad ID with leading zero if necessary ("1" -> "01")
+          // const id = pokemonId.padStart(2, '0') // Pad ID with leading zero if necessary ("1" -> "01")
           return {
-            id,
+            id: pokemonId,
             name: pokemon.name
           }
         })

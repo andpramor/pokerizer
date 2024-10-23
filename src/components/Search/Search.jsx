@@ -55,7 +55,7 @@ export const Search = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='search'>
       <input
         type='text'
         name='searchPokemon'
@@ -66,19 +66,20 @@ export const Search = () => {
         placeholder='Search Pokémon'
         aria-label='Search Pokémon'
       />
-      {showList && (
-        <ul>
-          {loading ? (
-            <li>Loading...</li>
-          ) : (
-            searchResults.map((pokemon) => (
-              <li key={pokemon.id} onMouseDown={() => handleSelect(pokemon.id)}>
-                {pokemon.id} {pokemon.name}
-              </li>
-            ))
-          )}
-        </ul>
-      )}
+      <ul
+        className={`searchResults ${showList ? 'searchResults_visible' : ''}`}
+      >
+        {loading ? (
+          <li>Loading...</li>
+        ) : (
+          searchResults.map((pokemon) => (
+            <li key={pokemon.id} onMouseDown={() => handleSelect(pokemon.id)}>
+              <span className='searchResult-id'>{pokemon.id}</span>
+              <span className='searchResult-name'>{pokemon.name}</span>
+            </li>
+          ))
+        )}
+      </ul>
     </form>
   )
 }
