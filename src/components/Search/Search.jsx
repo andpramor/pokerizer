@@ -14,7 +14,7 @@ export const Search = () => {
     e.preventDefault()
     setSearchTerm('')
     e.target.elements.searchPokemon.blur()
-    // TODO: actual fetch
+    // TODO: actual fetch -> navigate to a detail view like RandomCard with the given searched pokemon or missingno
   }
   const handleInputChange = (e) => {
     const newSearchTerm = e.target.value
@@ -22,7 +22,7 @@ export const Search = () => {
     // TODO: Filter list
   }
 
-  if(error) console.error(error)
+  if (error) console.error(error)
 
   return (
     <form onSubmit={handleSubmit}>
