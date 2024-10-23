@@ -13,7 +13,7 @@ export const Footer = () => {
       </span>
       <span className='footer-name'>
         2024
-        <ReactLogo width='1rem' height='auto' />
+        <ReactLogo width='1rem' />
         Andrés Prado Morgaz</span>
     </footer>
   )

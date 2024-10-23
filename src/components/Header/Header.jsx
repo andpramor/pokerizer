@@ -3,6 +3,7 @@ import favicon from '../../../favicon.png'
 import userPlaceholder from '../../assets/userPlaceholder.png'
 
 import { Link } from 'react-router-dom'
+import { Search } from '../Search/Search'
 
 export const Header = () => {
   return (
@@ -17,6 +18,9 @@ export const Header = () => {
                 className='pokerizer-logo'
               />
             </Link>
+          </li>
+          <li>
+            <Search />
           </li>
           <li>
             <Link to='/randomPokemon'>Random Pokémon</Link>

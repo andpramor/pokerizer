@@ -24,12 +24,14 @@ export const RandomCard = () => {
 
   const handleShinyToggle = () => {setShiny(prevShiny => !prevShiny)}
 
+  const handleSubmit = (e) => e.preventDefault()
+
   return (
     <div className='randomCard'>
       <button onClick={handleShinyToggle}>Toggle shiny</button>
       <PortraitCard pokemon={pokemon} shiny={shiny} />
       <section className='randomCard-interaction'>
-        <form onSubmit={() => {}}>
+        <form onSubmit={handleSubmit}>
           Add to
           <select>
             <option value='1'>Team 1</option>
