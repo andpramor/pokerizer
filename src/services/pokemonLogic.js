@@ -13,7 +13,7 @@ export const getRandomPokemon = async () => {
 
 export const getPokemonById = async (pokemonId) => {
   try {
-    if (Number(String(pokemonId).charAt(0)) === 0) {
+    if (String(pokemonId).charAt(0) === 0) {
       pokemonId = pokemonId.slice(1) // Accept 01 = 1, instead of 01 = Missingno.
     }
 
