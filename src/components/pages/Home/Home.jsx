@@ -6,7 +6,7 @@ import { PortraitCard } from '../../Pokemon/PortraitCard/PortraitCard'
 export const Home = () => {
   return (
     <div className='home'>
-      <h1>Home Page</h1>
+      <h1>Welcome to Pokerizer!</h1>
       <PortraitCard pokemon={proccessedPokemon} />
     </div>
   )
