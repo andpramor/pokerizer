@@ -3,12 +3,16 @@ import './Search.css'
 import { useState } from 'react'
 import { usePokemonList } from '../../hooks/usePokemonList'
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const Search = () => {
+  const navigate = useNavigate()
   const [showList, setShowList] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const { pokemonList, error, loading } = usePokemonList()
   const [searchResults, setSearchResults] = useState([])
+
+  if (error) console.error(error)
 
   useEffect(() => {
     setSearchResults(pokemonList)
@@ -16,13 +20,7 @@ export const Search = () => {
 
   const handleFocus = () => setShowList(true)
   const handleBlur = () => setShowList(false)
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setSearchTerm('')
-    e.target.elements.searchPokemon.blur()
-    setSearchResults(pokemonList)
-    // TODO: actual fetch -> navigate to a detail view like RandomCard with the given searched pokemon or missingno
-  }
+
   const handleInputChange = (e) => {
     const newSearchTerm = e.target.value
     setSearchTerm(newSearchTerm)
@@ -40,7 +38,21 @@ export const Search = () => {
     setSearchResults(newSearchResults)
   }
 
-  if (error) console.error(error)
+  const triggerNavigate = (route) => {
+    navigate(`/${route}`) // TODO: add a const name to the route and check for the /name/:param
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setSearchTerm('')
+    e.target.elements.searchPokemon.blur()
+    setSearchResults(pokemonList)
+    triggerNavigate(searchTerm)
+  }
+
+  const handleSelect = (pokemonId) => {
+    triggerNavigate(pokemonId)
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -60,7 +72,7 @@ export const Search = () => {
             <li>Loading...</li>
           ) : (
             searchResults.map((pokemon) => (
-              <li key={pokemon.id}>
+              <li key={pokemon.id} onMouseDown={() => handleSelect(pokemon.id)}>
                 {pokemon.id} {pokemon.name}
               </li>
             ))

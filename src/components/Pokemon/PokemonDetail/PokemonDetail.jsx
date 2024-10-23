@@ -1,0 +1,1 @@
+// ! En el useEffect de este componente, leer de la ruta el id y llamar a getPokemonById
