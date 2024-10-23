@@ -21,7 +21,7 @@
   transition: color 0.3s;
 }
 .footer-links a:hover {
-  color: var(--hovered-link);
+  color: var(--primary);
 }
 
 .footer-name {
