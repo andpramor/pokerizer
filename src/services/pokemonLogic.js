@@ -3,7 +3,7 @@ import {
   POKEMON_BY_ID_ENDPOINT
 } from './constants.js'
 
-const getRandomPokemonNumber = () => {
+export const getRandomPokemonNumber = () => {
   return Math.floor(Math.random() * AVAILABLE_NUMBER_OF_POKEMON) + 1
 }
 
