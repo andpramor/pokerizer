@@ -1,7 +1,7 @@
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css'); /* Bootstrap icons CDN */
 
 :root {
-  --primary: lightseagreen;
+  --primary: hsl(207.2995861876241, 100%, 25%);
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1;
@@ -50,4 +50,24 @@ p {
   margin: 0 auto;
   padding: 0 1rem;
   box-sizing: border-box;
+}
+
+.bg-blue-gradient {
+  background-color: hsl(204, 0%, 100%);
+  background-image: radial-gradient(
+      circle at 0% 0%,
+      hsl(207.2995861876241, 100%, 25%) 3%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      hsl(207.2412045062839, 100%, 40%) 3%,
+      transparent 39%
+    ),
+    radial-gradient(
+      circle at 60% 102%,
+      hsl(207.08737864077668, 100%, 32%) 0%,
+      transparent 134%
+    );
+  background-blend-mode: normal, normal, normal;
 }

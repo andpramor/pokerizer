@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { usePokemonList } from '../../hooks/usePokemonList'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { SPRITE_IMG } from '../../services/constants'
 
 export const Search = () => {
   const navigate = useNavigate()
@@ -38,6 +39,14 @@ export const Search = () => {
     setSearchResults(newSearchResults)
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      e.target.blur()
+      setSearchResults(pokemonList)
+      setSearchTerm('')
+    }
+  }
+
   const triggerNavigate = (route) => {
     navigate(`/${route}`) // TODO: add a const name to the route and check for the /name/:param
   }
@@ -63,19 +72,21 @@ export const Search = () => {
         onChange={handleInputChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
         placeholder='Search Pokémon'
         aria-label='Search Pokémon'
       />
       <ul
-        className={`searchResults ${showList ? 'searchResults_visible' : ''}`}
+        className={`searchResults bg-blue-gradient ${showList ? 'searchResults_visible' : ''}`}
       >
         {loading ? (
           <li>Loading...</li>
         ) : (
           searchResults.map((pokemon) => (
             <li key={pokemon.id} onMouseDown={() => handleSelect(pokemon.id)}>
+              <img src={`${SPRITE_IMG}${pokemon.id}.png`} alt={pokemon.name} loading='lazy' />
               <span className='searchResult-id'>{pokemon.id}</span>
-              <span className='searchResult-name'>{pokemon.name}</span>
+              <span className='searchResult-name'>{pokemon.name.charAt(0).toUpperCase().concat(pokemon.name.slice(1))}</span>
             </li>
           ))
         )}

@@ -25,9 +25,6 @@ export const Header = () => {
           <li>
             <Link to='/randomPokemon'>Random Pokémon</Link>
           </li>
-          <li>
-            <Link to='/about'>ABOUT</Link>
-          </li>
         </ul>
       </nav>
       <nav aria-label='User related navigation'>
@@ -37,6 +34,9 @@ export const Header = () => {
           </li>
           <li style={{ display: 'none' }}>
             <Link to='/singup'>Sign up</Link>
+          </li>
+          <li>
+            <Link to='/about'>ABOUT</Link>
           </li>
           <li>
             <Link to='/profile'>
