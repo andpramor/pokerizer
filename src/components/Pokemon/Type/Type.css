@@ -6,8 +6,7 @@
     transition: opacity 0.25s;
     display: grid;
     place-items: center;
-    height: fit-content;
-    width: fit-content;
+    height: 1.5rem;
     cursor: default;
 }
 

@@ -20,7 +20,11 @@ export const Search = () => {
   }, [pokemonList])
 
   const handleFocus = () => setShowList(true)
-  const handleBlur = () => setShowList(false)
+  const handleBlur = () => {
+    setShowList(false)
+    setSearchTerm('')
+    setSearchResults(pokemonList)
+  }
 
   const handleInputChange = (e) => {
     const newSearchTerm = e.target.value
@@ -48,7 +52,7 @@ export const Search = () => {
   }
 
   const triggerNavigate = (route) => {
-    navigate(`/${route}`) // TODO: add a const name to the route and check for the /name/:param
+    navigate(`/pokedetails/${route}`)
   }
 
   const handleSubmit = (e) => {
@@ -77,16 +81,29 @@ export const Search = () => {
         aria-label='Search Pokémon'
       />
       <ul
-        className={`searchResults bg-blue-gradient ${showList ? 'searchResults_visible' : ''}`}
+        className={`searchResults bg-blue-gradient ${
+          showList ? 'searchResults_visible' : ''
+        }`}
       >
         {loading ? (
           <li>Loading...</li>
+        ) : searchResults.length === 0 ? (
+          <li className='searchResults-noResults'>No results found</li>
         ) : (
           searchResults.map((pokemon) => (
             <li key={pokemon.id} onMouseDown={() => handleSelect(pokemon.id)}>
-              <img src={`${SPRITE_IMG}${pokemon.id}.png`} alt={pokemon.name} loading='lazy' />
+              <img
+                src={`${SPRITE_IMG}${pokemon.id}.png`}
+                alt={pokemon.name}
+                loading='lazy'
+              />
               <span className='searchResult-id'>{pokemon.id}</span>
-              <span className='searchResult-name'>{pokemon.name.charAt(0).toUpperCase().concat(pokemon.name.slice(1))}</span>
+              <span className='searchResult-name'>
+                {pokemon.name
+                  .charAt(0)
+                  .toUpperCase()
+                  .concat(pokemon.name.slice(1))}
+              </span>
             </li>
           ))
         )}

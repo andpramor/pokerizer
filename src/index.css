@@ -14,23 +14,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: hsla(185, 0%, 100%, 1);
-  background-image: radial-gradient(
-      circle at 91% 11%,
-      hsla(66, 100%, 88%, 0.66) 4.038772213247173%,
-      transparent 37.2265767974114%
-    ),
-    radial-gradient(
-      circle at 66% 37%,
-      hsla(16, 100%, 88%, 1) 0%,
-      transparent 63.33640956108327%
-    ),
-    radial-gradient(
-      circle at 36% 87%,
-      hsla(321, 100%, 88%, 1) 12.107536057085522%,
-      transparent 63.33640956108327%
-    );
-  background-blend-mode: normal, normal, normal;
+  
+}
+
+/* Site gradient background */
+html {
+  background-color: hsla(163, 0%, 96%, 1);
+  background-image: radial-gradient(circle at 37% 25%, hsla(166, 52%, 85%, 1) 6.688754566361296%, transparent 44.98438254159411%), radial-gradient(circle at 86% 50%, hsla(28, 52%, 85%, 1) 6.688754566361296%, transparent 44.98438254159411%);
+  background-blend-mode: color, color;
 }
 
 html,
