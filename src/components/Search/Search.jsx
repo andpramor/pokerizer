@@ -52,7 +52,7 @@ export const Search = () => {
   }
 
   const triggerNavigate = (route) => {
-    navigate(`/pokedetails/${route}`)
+    navigate(`/pokemonDetails/${route}`)
   }
 
   const handleSubmit = (e) => {

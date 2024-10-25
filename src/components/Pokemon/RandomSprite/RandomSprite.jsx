@@ -13,7 +13,7 @@ export const RandomSprite = () => {
     <img
       src={spriteSrc}
       alt={`${pokemonId} sprite`}
-      className={`sprite ${shiny ? 'sprite-shiny' : ''}`}
+      className={`sprite ${shiny ? 'sprite-shiny-bg' : ''}`}
     />
   )
 }

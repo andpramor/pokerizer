@@ -23,17 +23,19 @@ export const getPokemonById = async (pokemonId) => {
       if (response.status === 404) {
         const missingno = {
           name: 'MissingNo',
-          sprite: '/missingno.webp',
-          sprite_shiny: '/missingno.webp',
+          sprite:
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/MissingNo.svg/200px-MissingNo.svg.png',
+          sprite_shiny:
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/MissingNo.svg/200px-MissingNo.svg.png',
           types: ['normal'],
           // movePool: [{ name: 'Water gun', type: 'water' }, { name: 'Tackle', type: 'normal' }, { name: 'Sky attack', type: 'flying' }],
           stats: [
-            { base: 33, name: 'hp' },
-            { base: 136, name: 'attack' },
-            { base: 0, name: 'defence' },
-            { base: 6, name: 'special-attack' },
-            { base: 6, name: 'special-defence' },
-            { base: 29, name: 'speed' }
+            { base: 33, name: 'Hp' },
+            { base: 136, name: 'Attack' },
+            { base: 0, name: 'Defence' },
+            { base: 6, name: 'Special-attack' },
+            { base: 6, name: 'Special-defence' },
+            { base: 29, name: 'Speed' }
           ]
         }
         return missingno
@@ -48,7 +50,10 @@ export const getPokemonById = async (pokemonId) => {
     const newTypes = types.map((type) => type.type.name)
 
     const newStats = stats.map((stat) => ({
-      name: stat.stat.name,
+      name: stat.stat.name
+        .charAt(0)
+        .toUpperCase()
+        .concat(stat.stat.name.slice(1)),
       base: stat.base_stat
     }))
 
