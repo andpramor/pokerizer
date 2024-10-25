@@ -4,17 +4,18 @@ import './PokemonDetail.css'
 
 import { useParams } from 'react-router-dom'
 import { Type } from '../Type/Type'
+import { EvolutionChain } from '../EvolutionChain/EvolutionChain'
 
 export const PokemonDetail = () => {
   const { pokemonId } = useParams()
-  const { pokemon, loading } = usePokemonDetails({ pokemonId })
+  const { pokemon, loadingPokemon, evolution, loadingEvolution } = usePokemonDetails({ pokemonId })
   const [showShiny, setShowShiny] = useState(false)
 
   const handleToggleShiny = () => setShowShiny((prev) => !prev)
 
   return (
     <div className='details'>
-      {loading ? (
+      {loadingPokemon ? (
         <div className='loader' />
       ) : (
         <>
@@ -53,6 +54,9 @@ export const PokemonDetail = () => {
                 </div>
               )}
               </div>
+          </section>
+          <section className='details-evolutionChain'>
+            {!loadingEvolution && <EvolutionChain evolution={evolution} />}
           </section>
         </>
       )}

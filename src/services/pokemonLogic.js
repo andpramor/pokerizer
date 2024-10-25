@@ -1,6 +1,7 @@
 import {
   AVAILABLE_NUMBER_OF_POKEMON,
-  POKEMON_BY_ID_ENDPOINT
+  POKEMON_BY_ID_ENDPOINT,
+  POKEMON_SPECIES_ENDPOINT
 } from './constants.js'
 
 export const getRandomPokemonNumber = () => {
@@ -79,4 +80,57 @@ export const getPokemonById = async (pokemonId) => {
     console.error('Error fetching pokemon data: ', error)
     throw error
   }
+}
+
+export const getEvolutionChain = async (pokemonId) => {
+  try {
+    const response = await fetch(`${POKEMON_SPECIES_ENDPOINT}${pokemonId}`)
+    if (!response.ok) throw new Error('Error fetching the species data')
+    const data = await response.json()
+
+    const { url } = data.evolution_chain
+
+    try {
+      const response = await fetch(url)
+      if (!response.ok) throw new Error('Error fetching the evolution chain')
+      const { chain } = await response.json()
+
+      return extractEvolutionData(chain)
+    } catch (error) {
+      console.error('Failed to fetch the evolution chain')
+      throw error
+    }
+  } catch (error) {
+    console.error('Failed to fetch the species data:', error)
+    throw error
+  }
+}
+
+// Recursively traverse the evolution chain json to extract every pokémon in the chain, preserving the predecessor.
+const extractEvolutionData = (evolutionChain) => {
+  const evolutions = []
+
+  const traverseChain = ({ node, predecessor = null }) => {
+    // Añadir la especie actual y su detalle de evolución
+    if (node.species && node.evolution_details) {
+      evolutions.push({
+        id: node.species.url.match(/\/(\d+)\/$/)[1],
+        name: node.species.name,
+        predecessor, // el Pokémon del que evoluciona
+        trigger: node.evolution_details[0]?.trigger?.name || 'unknown',
+        minLevel: node.evolution_details[0]?.min_level || null,
+        item: node.evolution_details[0]?.item?.name || null
+      })
+    }
+
+    // For each node, traverse nested ones using the current pokemon as predecessor.
+    node.evolves_to.forEach((evolution) =>
+      traverseChain({ node: evolution, predecessor: node.species.name })
+    )
+  }
+
+  // Initiall call with the full evolutionChain and no predecessor
+  traverseChain({ node: evolutionChain })
+
+  return evolutions
 }
