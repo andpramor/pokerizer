@@ -1,6 +1,6 @@
 import './App.css'
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 
 import { Header } from './components/Header/Header'
 import { Footer } from './components/Footer/Footer'
@@ -13,7 +13,7 @@ import { PokemonDetail } from './components/Pokemon/PokemonDetail/PokemonDetail'
 
 function App() {
   return (
-    <BrowserRouter basename='/pokerizer'>
+    <HashRouter>
       <div className='app'>
         <Header />
         <main>
@@ -27,7 +27,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
