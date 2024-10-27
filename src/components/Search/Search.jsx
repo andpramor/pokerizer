@@ -1,9 +1,10 @@
 import './Search.css'
 
-import { useState } from 'react'
-import { usePokemonList } from '../../hooks/usePokemonList'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+import { usePokemonList } from '../../hooks/usePokemonList'
+import { Type } from '../Pokemon/Type/Type.jsx'
 import { SPRITE_IMG } from '../../services/constants'
 
 export const Search = () => {
@@ -103,6 +104,17 @@ export const Search = () => {
                   .charAt(0)
                   .toUpperCase()
                   .concat(pokemon.name.slice(1))}
+              </span>
+              <span
+                className={`${
+                  pokemon.types.length === 1
+                    ? 'searchResult-type'
+                    : 'searchResult-types'
+                }`}
+              >
+                {pokemon.types.map((type) => (
+                  <Type key={type} name={type} />
+                ))}
               </span>
             </li>
           ))

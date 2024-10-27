@@ -1,17 +1,12 @@
 .type {
-    padding: 0 16px;
+    font-size: 0.9rem;
     border-radius: 500px;
     color: #fff;
-    opacity: 0.85;
     transition: opacity 0.25s;
     display: grid;
     place-items: center;
     height: 1.5rem;
-    cursor: default;
-}
-
-.type:hover {
-    opacity: 1;
+    width: 4.5rem;
 }
 
 .type-normal {
