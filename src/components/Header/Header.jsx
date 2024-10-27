@@ -2,10 +2,17 @@ import './Header.css'
 import favicon from '../../../favicon.png'
 import userPlaceholder from '../../assets/userPlaceholder.png'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Search } from '../Search/Search'
+import { getRandomPokemonNumber } from '../../services/pokemonLogic'
 
 export const Header = () => {
+  const navigate = useNavigate()
+  const handleRandom = () => {
+    const randomPokemon = getRandomPokemonNumber()
+    navigate(`/pokemonDetails/${randomPokemon}`)
+  }
+  
   return (
     <header className='header'>
       <nav aria-label='Main navigation'>
@@ -22,8 +29,8 @@ export const Header = () => {
           <li>
             <Search />
           </li>
-          <li>
-            <Link to='/randomPokemon'>Random Pokémon</Link>
+          <li onClick={handleRandom} className='header-link'>
+            Random Pokémon
           </li>
         </ul>
       </nav>
