@@ -14,22 +14,26 @@ export const RandomCard = () => {
   })
   const [shiny, setShiny] = useState(false)
 
+  const fetchPokemon = async () => {
+    const fetchedPokemon = await getRandomPokemon()
+    setPokemon(fetchedPokemon)
+  }
+
   useEffect(() => {
-    const fetchPokemon = async () => {
-      const fetchedPokemon = await getRandomPokemon()
-      setPokemon(fetchedPokemon)
-    }
     fetchPokemon()
   }, [])
 
-  const handleShinyToggle = () => {setShiny(prevShiny => !prevShiny)}
+  const handleShinyToggle = () => {
+    setShiny((prevShiny) => !prevShiny)
+  }
 
   const handleSubmit = (e) => e.preventDefault()
 
   return (
     <div className='randomCard'>
+      <button onClick={fetchPokemon}>Get another one</button>
       <button onClick={handleShinyToggle}>Toggle shiny</button>
-      <PortraitCard pokemon={pokemon} shiny={shiny} />
+      {pokemon && <PortraitCard pokemon={pokemon} shiny={shiny} />}
       <section className='randomCard-interaction'>
         <form onSubmit={handleSubmit}>
           Add to

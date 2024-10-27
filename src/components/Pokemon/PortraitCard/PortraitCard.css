@@ -3,6 +3,9 @@
   aspect-ratio: 0.6;
   perspective: 2000px;
 }
+.portraitCard h2 {
+  text-align: center;
+}
 
 .portraitCard-content {
   position: relative;
