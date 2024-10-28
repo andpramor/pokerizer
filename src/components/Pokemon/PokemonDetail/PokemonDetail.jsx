@@ -1,10 +1,12 @@
-import { useState } from 'react'
-import { usePokemonDetails } from '../../../hooks/usePokemonDetails'
 import './PokemonDetail.css'
 
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Type } from '../Type/Type'
-import { EvolutionChain } from '../EvolutionChain/EvolutionChain'
+
+import { usePokemonDetails } from '../../../hooks/usePokemonDetails.js'
+import { Type } from '../Type/Type.jsx'
+import { EvolutionChain } from '../EvolutionChain/EvolutionChain.jsx'
+import { GAMES } from '../../../services/games.js'
 
 export const PokemonDetail = () => {
   const { pokemonId } = useParams()
@@ -32,6 +34,25 @@ export const PokemonDetail = () => {
               ))}
             </div>
           </section>
+          <section className='details-userInputs'>
+            <button className='details-addToFavs'>
+              <i className='bi bi-heart-fill' /> Add to /{' '}
+              <i className='bi bi-heart' /> Remove from Favs
+            </button>
+            <form onSubmit={handleSubmit} className='details-addToTeam'>
+              <h3>Add to</h3>
+              <select>
+                <option value='1'>Team 1</option>
+                <option value='2' disabled>
+                  Team 2
+                </option>
+                <option value='3' disabled>
+                  Team 3
+                </option>
+              </select>
+              <button type='submit'>Confirm</button>
+            </form>
+          </section>
           <section className='details-information'>
             <div className='details-sprite-side'>
               <img
@@ -58,30 +79,15 @@ export const PokemonDetail = () => {
               ))}
             </div>
           </section>
-          <section className='details-userInputs-container'>
-            <h2>Add to</h2>
-            <div className='details-userInputs'>
-              <form onSubmit={handleSubmit} className='details-addToTeam'>
-                <select>
-                  <option value='1'>Team 1</option>
-                  <option value='2' disabled>
-                    Team 2
-                  </option>
-                  <option value='3' disabled>
-                    Team 3
-                  </option>
-                </select>
-                <button type='submit'>Confirm</button>
-              </form>
-              <button className='details-addToFavs'>
-                <i className='bi bi-heart-fill' /> Add to / Remove from Favs
-              </button>
-            </div>
+          {!loadingEvolution && <EvolutionChain evolution={evolution} />}
+          <section className='details-games'>
+            <h3>Games {pokemon.name} appears in</h3>
+            <ul>
+              {pokemon.games.map((game) => (
+                <li key={game}>{GAMES[game]}</li>
+              ))}
+            </ul>
           </section>
-          <section className='details-evolutionChain'>
-            {!loadingEvolution && <EvolutionChain evolution={evolution} />}
-          </section>
-          <section style={{display: 'none'}}>It apperas in games: ...</section>
         </>
       )}
     </div>

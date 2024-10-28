@@ -37,7 +37,8 @@ export const getPokemonById = async (pokemonId) => {
             { base: 6, name: 'Special-attack' },
             { base: 6, name: 'Special-defence' },
             { base: 29, name: 'Speed' }
-          ]
+          ],
+          games: []
         }
         return missingno
       }
@@ -46,7 +47,7 @@ export const getPokemonById = async (pokemonId) => {
 
     const data = await response.json()
 
-    const { id, name, sprites, types, stats } = data
+    const { id, name, sprites, game_indices, types, stats } = data
 
     const newTypes = types.map((type) => type.type.name)
 
@@ -57,6 +58,8 @@ export const getPokemonById = async (pokemonId) => {
         .concat(stat.stat.name.slice(1)),
       base: stat.base_stat
     }))
+
+    const games = game_indices.map((game) => game.version.name)
 
     // const newMoves = []
     // getRandomMovePool(moves).then(moves => {
@@ -71,6 +74,7 @@ export const getPokemonById = async (pokemonId) => {
       // sprite: sprites.front_default,
       sprite: sprites.other['official-artwork'].front_default,
       sprite_shiny: sprites.other['official-artwork'].front_shiny,
+      games,
       types: newTypes,
       // movePool: newMoves,
       stats: newStats
@@ -108,29 +112,34 @@ export const getEvolutionChain = async (pokemonId) => {
 
 // Recursively traverse the evolution chain json to extract every pokémon in the chain, preserving the predecessor.
 const extractEvolutionData = (evolutionChain) => {
-  const evolutions = []
+  const groupedByStage = {};
 
-  const traverseChain = ({ node, predecessor = null }) => {
-    // Añadir la especie actual y su detalle de evolución
+  const traverseChain = ({ node, stage = 0 }) => {
     if (node.species && node.evolution_details) {
-      evolutions.push({
+      const pokemonData = {
         id: node.species.url.match(/\/(\d+)\/$/)[1],
         name: node.species.name,
-        predecessor, // el Pokémon del que evoluciona
         trigger: node.evolution_details[0]?.trigger?.name || 'unknown',
         minLevel: node.evolution_details[0]?.min_level || null,
         item: node.evolution_details[0]?.item?.name || null
-      })
+      };
+
+      // Add the current Pokémon under its stage in the grouped object
+      if (!groupedByStage[stage]) {
+        groupedByStage[stage] = [];
+      }
+      groupedByStage[stage].push(pokemonData);
     }
 
-    // For each node, traverse nested ones using the current pokemon as predecessor.
+    // Traverse each subsequent evolution, incrementing the stage
     node.evolves_to.forEach((evolution) =>
-      traverseChain({ node: evolution, predecessor: node.species.name })
-    )
-  }
+      traverseChain({ node: evolution, stage: stage + 1 })
+    );
+  };
 
-  // Initiall call with the full evolutionChain and no predecessor
-  traverseChain({ node: evolutionChain })
+  // Initial call with the full evolution chain starting at stage 0
+  traverseChain({ node: evolutionChain });
 
-  return evolutions
-}
+  return groupedByStage;
+};
+
