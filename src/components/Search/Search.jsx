@@ -58,10 +58,12 @@ export const Search = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setSearchTerm('')
-    e.target.elements.searchPokemon.blur()
-    setSearchResults(pokemonList)
-    triggerNavigate(searchTerm)
+    if (searchResults.length > 0) {
+      setSearchTerm('')
+      e.target.elements.searchPokemon.blur()
+      setSearchResults(pokemonList)
+      triggerNavigate(searchResults[0].id)
+    }
   }
 
   const handleSelect = (pokemonId) => {
