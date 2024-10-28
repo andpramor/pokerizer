@@ -81,6 +81,7 @@ export const PokemonDetail = () => {
           <section className='details-evolutionChain'>
             {!loadingEvolution && <EvolutionChain evolution={evolution} />}
           </section>
+          <section style={{display: 'none'}}>It apperas in games: ...</section>
         </>
       )}
     </div>

@@ -32,6 +32,9 @@ export const Header = () => {
           <li onClick={handleRandom} className='header-link'>
             Random Pokémon
           </li>
+          <li>
+            <Link to='/pokedex'>Your Pokedex</Link>
+          </li>
         </ul>
       </nav>
       <nav aria-label='User related navigation'>

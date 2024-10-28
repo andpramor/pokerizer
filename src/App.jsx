@@ -7,6 +7,7 @@ import { Footer } from './components/Footer/Footer'
 
 import { Home } from './components/pages/Home/Home'
 import { About } from './components/pages/About/About'
+import { Pokedex } from './components/pages/Pokedex/Pokedex'
 import { Error404 } from './components/pages/Error404/Error404'
 import { PokemonDetail } from './components/Pokemon/PokemonDetail/PokemonDetail'
 
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
+            <Route path='/pokedex' element={<Pokedex />} />
             <Route
               path='/pokemonDetails/:pokemonId'
               element={<PokemonDetail />}
