@@ -30,6 +30,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .evolution-member {
@@ -46,4 +47,9 @@
   width: 8rem;
   filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.2));
   cursor: pointer;
+}
+
+.evolution-info {
+  position: absolute;
+  bottom: -0.5rem;
 }

@@ -34,7 +34,7 @@ export const EvolutionChain = ({ evolution }) => {
                     </h3>
                   </div>
                   {pokemon.trigger !== 'unknown' && (
-                    <div>
+                    <div className='evolution-info'>
                       {pokemon.trigger === 'level-up' &&
                       pokemon.minLevel !== null ? (
                         <>Level {pokemon.minLevel}</>
