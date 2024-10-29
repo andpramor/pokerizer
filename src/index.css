@@ -48,6 +48,10 @@ li {
 li {
   list-style: none;
 }
+a {
+  text-decoration: none;
+  color: currentColor;
+}
 
 .bg-blue-gradient {
   background-color: hsl(204, 0%, 100%);
