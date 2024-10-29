@@ -7,12 +7,12 @@
   gap: 1rem;
   transition: box-shadow 0.3s, filter 0.5s, background-color 0.5s;
 }
+.pokedex-list .pokemonCard {
+  background-color: black;
+}
 .pokemonCard:hover {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-.pokedex:has(.pokemonCard:hover) .pokemonCard:not(:hover) {
-  filter: grayscale(0.25);
-  background-color: black;
+  background-color: hsl(204, 0%, 100%);
 }
 
 .pokemonCard h2 {
