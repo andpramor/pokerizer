@@ -80,14 +80,17 @@ export const PokemonDetail = () => {
             </div>
           </section>
           {!loadingEvolution && <EvolutionChain evolution={evolution} />}
-          <section className='details-games'>
-            <h3>Games {pokemon.name} appears in</h3>
-            <ul>
-              {pokemon.games.map((game) => (
-                <li key={game}>{GAMES[game]}</li>
-              ))}
-            </ul>
-          </section>
+          {pokemon.games.length !== 0 && (
+            <section className='details-games'>
+              <h3>Games {pokemon.name} appears in</h3>
+              <ul>
+                {pokemon.games.length !== 0 &&
+                  pokemon.games.map((game) => (
+                    <li key={game}>{GAMES[game]}</li>
+                  ))}
+              </ul>
+            </section>
+          )}
         </>
       )}
     </div>
