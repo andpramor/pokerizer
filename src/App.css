@@ -21,6 +21,7 @@
 /* Loader */
 
 .loader {
+  margin: 0 auto;
   position: relative;
   height: 100px;
   width: 100px;
