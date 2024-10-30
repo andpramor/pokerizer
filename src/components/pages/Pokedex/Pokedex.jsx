@@ -1,57 +1,30 @@
 import './Pokedex.css'
 
 import { useState } from 'react'
-import { PokemonCard } from '../../Pokemon/PokemonCard/PokemonCard.jsx'
 import { usePokedex } from '../../../hooks/usePokedex.js'
+import { usePokedexFilters } from '../../../hooks/usePokedexFilters.js'
+
+import { PokemonCard } from '../../Pokemon/PokemonCard/PokemonCard.jsx'
+
 import { POKEDEXES, TYPES } from '../../../services/constants.js'
-import { useEffect } from 'react'
+
+// TODO: Add filters by: seen, captured and favourites
 
 export const Pokedex = () => {
   const [pokedex, setPokedex] = useState('national')
-  const [selectedType, setSelectedType] = useState('')
   const { pokedexList, loading } = usePokedex({ pokedex })
-
-  const [searchTerm, setSearchTerm] = useState('')
-
-  const [filteredList, setFilteredList] = useState([])
+  const {
+    selectedType,
+    searchTerm,
+    filteredList,
+    handleTypeSelection,
+    handleSearchChange,
+    handlePokedexChange
+  } = usePokedexFilters({ pokedexList })
 
   const handlePokedexSelection = (event) => {
     setPokedex(event.target.value)
-    setSelectedType('')
-    setSearchTerm('')
-  }
-
-  useEffect(() => {
-    let newFilteredList = pokedexList
-
-    if (selectedType) {
-      newFilteredList = newFilteredList.filter((pokemon) =>
-        pokemon.types.includes(selectedType)
-      )
-    }
-
-    // Ignore left side zeros, surrounding spaces and letter case for the filter:
-    if (searchTerm) {
-      const normalizedSearchTerm = searchTerm
-        .replace(/^0+/, '')
-        .toLowerCase()
-        .trim()
-      newFilteredList = newFilteredList.filter(
-        (pokemon) =>
-          pokemon.id.toString().includes(String(normalizedSearchTerm)) ||
-          pokemon.name.toLowerCase().includes(normalizedSearchTerm)
-      )
-    }
-
-    setFilteredList(newFilteredList)
-  }, [pokedexList, selectedType, searchTerm])
-
-  const handleTypeSelection = (event) => {
-    setSelectedType(event.target.value)
-  }
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value)
+    handlePokedexChange()
   }
 
   return (
@@ -60,7 +33,6 @@ export const Pokedex = () => {
         {POKEDEXES[pokedex].name} Pokédex
       </h1>
       <p style={{ display: 'none' }}>Seen: x / 1025. Got: y / 1025.</p>
-      {/* Filters: by type, by seen, by captured, by favourites */}
       <section className='pokedex-filters'>
         <label htmlFor='pokedex-selection'>
           <span>Pokédex</span>{' '}
