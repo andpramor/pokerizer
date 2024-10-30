@@ -13,7 +13,7 @@ export const PokemonCard = ({ pokemon }) => {
             #{pokemon.regionalId ? pokemon.regionalId : pokemon.id}{' '}
             {pokemon.name}
           </h2>
-          {pokemon.regionalId && pokemon.regionalId != pokemon.id && <p>National: #{pokemon.id}</p>}
+          {pokemon.regionalId && <p>National: #{pokemon.id}</p>}
         </header>
       </Link>
       <Link to={`/pokemonDetails/${pokemon.id}`}>
