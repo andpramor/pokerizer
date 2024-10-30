@@ -15,17 +15,33 @@
   background-color: hsl(204, 0%, 100%);
 }
 
-.pokemonCard h2 {
-  font-size: 1.2rem;
-  text-align: center;
+.pokemonCard-header {
   color: white;
   cursor: pointer;
+  text-align: center;
 }
+
+.pokemonCard-header h2 {
+  font-size: 1.2rem;
+}
+
+.pokemonCard-header p {
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
 .pokemonCard img {
   width: 8rem;
   filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.5));
   cursor: pointer;
 }
+
+.pokemonCard-types {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .pokemonCard-controls {
   color: white;
   width: 100%;

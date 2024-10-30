@@ -1,15 +1,20 @@
 import './PokemonCard.css'
 
-import { SPRITE_IMG } from '../../../services/constants'
 import { Link } from 'react-router-dom'
+import { SPRITE_IMG } from '../../../services/constants.js'
+import { Type } from '../Type/Type.jsx'
 
 export const PokemonCard = ({ pokemon }) => {
   return (
     <article className='pokemonCard bg-blue-gradient'>
       <Link to={`/pokemonDetails/${pokemon.id}`}>
-        <h2>
-          #{pokemon.id} {pokemon.name}
-        </h2>
+        <header className='pokemonCard-header'>
+          <h2>
+            #{pokemon.regionalId ? pokemon.regionalId : pokemon.id}{' '}
+            {pokemon.name}
+          </h2>
+          {pokemon.regionalId && pokemon.regionalId != pokemon.id && <p>National: #{pokemon.id}</p>}
+        </header>
       </Link>
       <Link to={`/pokemonDetails/${pokemon.id}`}>
         <img
@@ -18,6 +23,11 @@ export const PokemonCard = ({ pokemon }) => {
           loading='lazy'
         />
       </Link>
+      <div className='pokemonCard-types'>
+        {pokemon.types.map((type) => (
+          <Type key={type} name={type} />
+        ))}
+      </div>
       <div className='pokemonCard-controls'>
         <label htmlFor='seenCheckbox'>
           <i className='bi bi-check-square'></i> Seen

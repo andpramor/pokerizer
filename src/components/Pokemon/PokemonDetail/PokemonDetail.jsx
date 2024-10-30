@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import { usePokemonDetails } from '../../../hooks/usePokemonDetails.js'
 import { Type } from '../Type/Type.jsx'
 import { EvolutionChain } from '../EvolutionChain/EvolutionChain.jsx'
-import { GAMES } from '../../../services/games.js'
+import { GAMES } from '../../../services/constants.js'
 
 export const PokemonDetail = () => {
   const { pokemonId } = useParams()

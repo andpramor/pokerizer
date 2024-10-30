@@ -3,7 +3,7 @@ import './Search.css'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { usePokemonList } from '../../hooks/usePokemonList'
+import { usePokemonContext } from '../../hooks/usePokemonContext'
 import { Type } from '../Pokemon/Type/Type.jsx'
 import { SPRITE_IMG } from '../../services/constants'
 
@@ -11,10 +11,8 @@ export const Search = () => {
   const navigate = useNavigate()
   const [showList, setShowList] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-  const { pokemonList, error, loading } = usePokemonList()
+  const { pokemonList, loading } = usePokemonContext()
   const [searchResults, setSearchResults] = useState([])
-
-  if (error) console.error(error)
 
   useEffect(() => {
     setSearchResults(pokemonList)
