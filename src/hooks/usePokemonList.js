@@ -28,7 +28,7 @@ export const usePokemonList = () => {
 
               data.pokemon.forEach((pokemonEntry) => {
                 const { name, url } = pokemonEntry.pokemon
-                const id = Number(url.match(/\/(\d+)\/$/)[1]) // The id is surrounded by slashes at the end of the url attribute of the pokemon object in the API response
+                const id = url.match(/\/(\d+)\/$/)[1] // The id is surrounded by slashes at the end of the url attribute of the pokemon object in the API response
                 const slot = pokemonEntry.slot
 
                 // Initialize pokemon if it doesn't already exist in the map
@@ -46,7 +46,9 @@ export const usePokemonList = () => {
         )
 
         // Convert the map to an array of Pokémon objects
-        const newPokemonList = Array.from(pokemonMap.values()).sort()
+        const newPokemonList = Array.from(pokemonMap.values()).sort(
+          (a, b) => Number(a.id) - Number(b.id)
+        )
         setPokemonList(newPokemonList)
         localStorage.setItem('pokemonList', JSON.stringify(newPokemonList))
       } catch (error) {

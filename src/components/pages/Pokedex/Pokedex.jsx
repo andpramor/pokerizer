@@ -56,7 +56,7 @@ export const Pokedex = () => {
             onChange={handleTypeSelection}
           >
             <option value=''>All types</option>
-            {TYPES.map((type) => (
+            {TYPES.filter(type => type !== 'stellar').map((type) => (
               <option key={type} value={type}>
                 {type.charAt(0).toUpperCase().concat(type.slice(1))} type
               </option>
