@@ -15,45 +15,43 @@ export const Pokedex = () => {
 
   const [filteredList, setFilteredList] = useState([])
 
-  useEffect(() => {
-    setFilteredList(pokedexList)
-  }, [pokedexList])
-
   const handlePokedexSelection = (event) => {
     setPokedex(event.target.value)
     setSelectedType('')
     setSearchTerm('')
   }
 
-  const handleTypeSelection = (event) => {
-    setSearchTerm('')
-    const type = event.target.value
-    setSelectedType(type)
-    if (type === '') {
-      setFilteredList(pokedexList)
-      return
+  useEffect(() => {
+    let newFilteredList = pokedexList
+
+    if (selectedType) {
+      newFilteredList = newFilteredList.filter((pokemon) =>
+        pokemon.types.includes(selectedType)
+      )
     }
-    const newFilteredList = pokedexList.filter((pokemon) =>
-      pokemon.types.includes(type)
-    )
+
+    // Ignore left side zeros, surrounding spaces and letter case for the filter:
+    if (searchTerm) {
+      const normalizedSearchTerm = searchTerm
+        .replace(/^0+/, '')
+        .toLowerCase()
+        .trim()
+      newFilteredList = newFilteredList.filter(
+        (pokemon) =>
+          pokemon.id.toString().includes(String(normalizedSearchTerm)) ||
+          pokemon.name.toLowerCase().includes(normalizedSearchTerm)
+      )
+    }
+
     setFilteredList(newFilteredList)
+  }, [pokedexList, selectedType, searchTerm])
+
+  const handleTypeSelection = (event) => {
+    setSelectedType(event.target.value)
   }
 
   const handleSearchChange = (e) => {
-    const newSearchTerm = e.target.value
-    setSearchTerm(newSearchTerm)
-
-    // Ignore left side zeros, surrounding spaces and letter case for the filter:
-    const normalizedSearchTerm = newSearchTerm
-      .replace(/^0+/, '')
-      .toLowerCase()
-      .trim()
-    const newSearchResults = filteredList.filter(
-      (pokemon) =>
-        pokemon.id.toString().includes(String(normalizedSearchTerm)) ||
-        pokemon.name.includes(normalizedSearchTerm)
-    )
-    setFilteredList(newSearchResults)
+    setSearchTerm(e.target.value)
   }
 
   return (
@@ -95,7 +93,12 @@ export const Pokedex = () => {
         </label>
         <label htmlFor='pokedex-search'>
           <span>Search</span>{' '}
-          <input type='text' name='pokedex-search' value={searchTerm} onChange={handleSearchChange} />
+          <input
+            type='text'
+            name='pokedex-search'
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
         </label>
       </section>
       {loading ? (
