@@ -2,6 +2,28 @@ export const AVAILABLE_NUMBER_OF_POKEMON = 1025
 
 export const POKEMON_BY_ID_ENDPOINT = 'https://pokeapi.co/api/v2/pokemon/'
 
+export const TYPES = [
+  'normal',
+  'fighting',
+  'flying',
+  'poison',
+  'ground',
+  'rock',
+  'bug',
+  'ghost',
+  'steel',
+  'fire',
+  'water',
+  'grass',
+  'electric',
+  'psychic',
+  'ice',
+  'dragon',
+  'dark',
+  'fairy',
+  'stellar'
+]
+
 export const POKEMON_TYPE_URLS = [
   'https://pokeapi.co/api/v2/type/normal/',
   'https://pokeapi.co/api/v2/type/fighting/',
