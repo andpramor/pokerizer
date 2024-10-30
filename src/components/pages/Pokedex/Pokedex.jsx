@@ -22,9 +22,11 @@ export const Pokedex = () => {
   const handlePokedexSelection = (event) => {
     setPokedex(event.target.value)
     setSelectedType('')
+    setSearchTerm('')
   }
 
   const handleTypeSelection = (event) => {
+    setSearchTerm('')
     const type = event.target.value
     setSelectedType(type)
     if (type === '') {
@@ -46,7 +48,7 @@ export const Pokedex = () => {
       .replace(/^0+/, '')
       .toLowerCase()
       .trim()
-    const newSearchResults = pokedexList.filter(
+    const newSearchResults = filteredList.filter(
       (pokemon) =>
         pokemon.id.toString().includes(String(normalizedSearchTerm)) ||
         pokemon.name.includes(normalizedSearchTerm)
