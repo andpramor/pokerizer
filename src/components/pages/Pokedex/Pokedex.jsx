@@ -8,8 +8,6 @@ import { PokemonCard } from '../../Pokemon/PokemonCard/PokemonCard.jsx'
 
 import { POKEDEXES, TYPES } from '../../../services/constants.js'
 
-// TODO: Add filters by: seen, captured and favourites
-
 export const Pokedex = () => {
   const [pokedex, setPokedex] = useState('national')
   const { pokedexList, loading } = usePokedex({ pokedex })
@@ -20,7 +18,8 @@ export const Pokedex = () => {
     handleTypeSelection,
     handleSearchChange,
     handlePokedexChange
-  } = usePokedexFilters({ pokedexList })
+  } = usePokedexFilters({ pokedexList }) // TODO: { pokedexList } -> { pokedexList, collectionStatus, onlyFavourites } o mejor, tener esos estados en el hook y devolver del hook los handlers como con los handleXChange
+  const [collectionState, setCollectionState] = useState('any')
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1)
@@ -52,6 +51,10 @@ export const Pokedex = () => {
     handlePokedexChange()
   }
 
+  const handleCollectionState = (e) => {
+    setCollectionState(e.target.value)
+  }
+
   return (
     <div className='pokedex'>
       {loading ? (
@@ -63,10 +66,14 @@ export const Pokedex = () => {
           </h1>
           <p style={{ display: 'none' }}>Seen: x / 1025. Got: y / 1025.</p>
           <section className='pokedex-filters'>
-            <label htmlFor='pokedex-selection'>
-              <span>Pokédex</span>{' '}
+            <label
+              className='game-selection'
+              htmlFor='game-selection'
+              aria-label='Game selection'
+            >
+              <span style={{ display: 'none' }}>Pokédex</span>{' '}
               <select
-                name='pokedex-selection'
+                name='game-selection'
                 value={pokedex}
                 onChange={handlePokedexSelection}
               >
@@ -92,15 +99,55 @@ export const Pokedex = () => {
                 ))}
               </select>
             </label>
-            <label htmlFor='pokedex-search'>
-              <span>Search</span>{' '}
-              <input
-                type='text'
-                name='pokedex-search'
-                value={searchTerm}
-                onChange={handleSearchChange}
-              />
-            </label>
+            <input
+              type='text'
+              name='pokedex-search'
+              value={searchTerm}
+              onChange={handleSearchChange}
+              placeholder='Search'
+              aria-label='Search Pokémon'
+            />
+            <div className='collection-state'>
+              <label htmlFor='any-collection-state'>
+                <input
+                  type='radio'
+                  name='any-collection-state'
+                  id='any-collection-state'
+                  value='any'
+                  checked={collectionState === 'any'}
+                  onChange={handleCollectionState}
+                  style={{ display: 'none' }}
+                />
+                {collectionState === 'any' ? <i className='bi bi-check-circle' /> : <i className='bi bi-circle' />}
+                <span>All</span>
+              </label>
+              <label htmlFor='seen-collection-state'>
+                <input
+                  type='radio'
+                  name='seen-collection-state'
+                  id='seen-collection-state'
+                  value='seen'
+                  checked={collectionState === 'seen'}
+                  onChange={handleCollectionState}
+                  style={{ display: 'none' }}
+                />
+                {collectionState === 'seen' ? <i className='bi bi-check-circle' /> : <i className='bi bi-circle' />}
+                <span>Seen</span>
+              </label>
+              <label htmlFor='captured-collection-state'>
+                <input
+                  type='radio'
+                  name='captured-collection-state'
+                  id='captured-collection-state'
+                  value='captured'
+                  checked={collectionState === 'captured'}
+                  onChange={handleCollectionState}
+                  style={{ display: 'none' }}
+                />
+                {collectionState === 'captured' ? <i className='bi bi-check-circle' /> : <i className='bi bi-circle' />}
+                <span>Captured</span>
+              </label>
+            </div>
           </section>
           <ul className='pokedex-list'>
             {currentPagePokemon.map((pokemon) => (
