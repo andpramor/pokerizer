@@ -1,10 +1,14 @@
 import './PokemonCard.css'
+import missingno from '../../../assets/missingno.webp'
 
 import { Link } from 'react-router-dom'
 import { SPRITE_IMG } from '../../../services/constants.js'
 import { Type } from '../Type/Type.jsx'
+import { useState } from 'react'
 
 export const PokemonCard = ({ pokemon }) => {
+  const [correct, setCorrect] = useState(true)
+
   return (
     <article className='pokemonCard bg-blue-gradient'>
       <Link to={`/pokemonDetails/${pokemon.id}`}>
@@ -17,11 +21,12 @@ export const PokemonCard = ({ pokemon }) => {
         </header>
       </Link>
       <Link to={`/pokemonDetails/${pokemon.id}`}>
-        <img
+        {correct && <img
           src={`${SPRITE_IMG}${pokemon.id}.png`}
           alt={`${pokemon.name} sprite`}
-          loading='lazy'
-        />
+          onError={() => setCorrect(false)}
+        />}
+        {!correct && <img src={missingno} alt="Sprite not found, here's Missingno" />}
       </Link>
       <div className='pokemonCard-types'>
         {pokemon.types.map((type) => (
