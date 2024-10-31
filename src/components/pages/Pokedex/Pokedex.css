@@ -30,3 +30,9 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2rem;
 }
+
+.pokedex .pokedex-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}

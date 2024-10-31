@@ -22,6 +22,31 @@ export const Pokedex = () => {
     handlePokedexChange
   } = usePokedexFilters({ pokedexList })
 
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 20
+
+  const endIndex = currentPage * itemsPerPage
+  const startIndex = endIndex - itemsPerPage
+  const currentPagePokemon = filteredList.slice(startIndex, endIndex)
+
+  const handleNextPage = () => {
+    if (currentPage < Math.ceil(filteredList.length / itemsPerPage)) {
+      setCurrentPage((prevPage) => prevPage + 1)
+    }
+  }
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1)
+    }
+  }
+
+  const handleFirstPage = () => setCurrentPage(1)
+  const handleLastPage = () => {
+    setCurrentPage(Math.ceil(filteredList.length / itemsPerPage))
+  }
+
   const handlePokedexSelection = (event) => {
     setPokedex(event.target.value)
     handlePokedexChange()
@@ -78,12 +103,43 @@ export const Pokedex = () => {
             </label>
           </section>
           <ul className='pokedex-list'>
-            {filteredList.map((pokemon) => (
+            {currentPagePokemon.map((pokemon) => (
               <li key={pokemon.id}>
                 <PokemonCard pokemon={pokemon} />
               </li>
             ))}
           </ul>
+          <div className='pokedex-pagination'>
+            {currentPage !== 1 && (
+              <i
+                className='bi bi-arrow-left-square-fill'
+                onClick={handleFirstPage}
+                aria-label='Go to the first page'
+              />
+            )}
+            {currentPage !== 1 && (
+              <i
+                className='bi bi-arrow-left-square'
+                onClick={handlePreviousPage}
+                aria-label='Go to the previous page'
+              />
+            )}
+            <span>Page {currentPage}</span>
+            {currentPage < Math.ceil(filteredList.length / itemsPerPage) && (
+              <i
+                className='bi bi-arrow-right-square'
+                onClick={handleNextPage}
+                aria-label='Go to the next page'
+              />
+            )}
+            {currentPage < Math.ceil(filteredList.length / itemsPerPage) && (
+              <i
+                className='bi bi-arrow-right-square-fill'
+                onClick={handleLastPage}
+                aria-label='Go to the last page'
+              />
+            )}
+          </div>
         </>
       )}
     </div>

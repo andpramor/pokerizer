@@ -11,7 +11,7 @@ export const PokemonCard = ({ pokemon }) => {
         <header className='pokemonCard-header'>
           <h2>
             #{pokemon.regionalId ? pokemon.regionalId : pokemon.id}{' '}
-            {pokemon.name}
+            {pokemon.name.charAt(0).toUpperCase().concat(pokemon.name.slice(1))}
           </h2>
           {pokemon.regionalId && <p>National: #{pokemon.id}</p>}
         </header>
