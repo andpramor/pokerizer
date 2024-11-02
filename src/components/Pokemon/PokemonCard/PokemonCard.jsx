@@ -14,10 +14,10 @@ export const PokemonCard = ({ pokemon }) => {
       <Link to={`/pokemonDetails/${pokemon.id}`}>
         <header className='pokemonCard-header'>
           <h2>
-            #{pokemon.regionalId ? pokemon.regionalId : pokemon.id}{' '}
+            #{pokemon.regionalId ?? pokemon.id}{' '}
             {pokemon.name.charAt(0).toUpperCase().concat(pokemon.name.slice(1))}
           </h2>
-          {pokemon.regionalId && <p>National: #{pokemon.id}</p>}
+          {pokemon.regionalId != null && <p>National: #{pokemon.id}</p>}
         </header>
       </Link>
       <Link to={`/pokemonDetails/${pokemon.id}`}>

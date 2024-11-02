@@ -15,6 +15,7 @@ export const usePokedex = ({ pokedex = 'national' } = {}) => {
     }
 
     const fetchPokedex = async () => {
+      setLoading(true)
       // Check if its cached in localStorage
       const storedPokedex = localStorage.getItem(pokedex)
       if (storedPokedex) {
