@@ -17,7 +17,11 @@ export const Header = () => {
       <Link to='/'>
         <img src={favicon} alt='Pokerizer logo' className='pokerizer-logo' />
       </Link>
-      <i className='bi bi-list burger' />
+      <label htmlFor='burger' className='burger-container'>
+        <input type="checkbox" className='burger' name="burger" id="burger" />
+        <i className='bi bi-list burger-icon' />
+        <i className="bi bi-x-lg burger-close"/>
+      </label>
       <section className='header-navigation'>
         <nav aria-label='Main navigation'>
           <ul className='header-links'>
