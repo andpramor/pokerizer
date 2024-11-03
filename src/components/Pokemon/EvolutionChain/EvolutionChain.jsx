@@ -1,6 +1,5 @@
 import './EvolutionChain.css'
 
-import React from 'react'
 import { SPRITE_IMG } from '../../../services/constants.js'
 import { Link } from 'react-router-dom'
 
@@ -10,7 +9,7 @@ export const EvolutionChain = ({ evolution }) => {
       <h2>Evolution</h2>
       <article className='evolution'>
         {Object.values(evolution).map((stage, index) => (
-          <React.Fragment key={index}>
+          <div key={index} className='evol'>
             {index !== 0 && (
               <i className='evolution-separator bi bi-arrow-right-square' />
             )}
@@ -49,7 +48,7 @@ export const EvolutionChain = ({ evolution }) => {
                 </div>
               ))}
             </section>
-          </React.Fragment>
+          </div>
         ))}
       </article>
     </section>
