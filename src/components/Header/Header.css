@@ -39,7 +39,10 @@
   justify-content: space-around;
   background-color: white;
 
-  display: none;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+
+  display: flex;
 }
 @media screen and (min-width: 768px) {
   .header .header-navigation {
@@ -50,6 +53,8 @@
     background-color: unset;
     width: unset;
     height: unset;
+    transform: unset;
+    transition: unset;
     padding: 0.5rem 0;
     display: flex;
     flex-direction: row;
@@ -71,7 +76,11 @@ body:has(.burger:checked) {
 }
 
 .burger-container:has(.burger:checked) + .header-navigation {
-  display: flex;
+  transform: translateX(0);
+}
+
+.header a:has(.pokerizer-logo) {
+  z-index: 9999;
 }
 
 .header .pokerizer-logo {

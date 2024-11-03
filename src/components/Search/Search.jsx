@@ -7,7 +7,7 @@ import { usePokemonContext } from '../../hooks/usePokemonContext'
 import { Type } from '../Pokemon/Type/Type.jsx'
 import { SPRITE_IMG } from '../../services/constants'
 
-export const Search = () => {
+export const Search = ({ closeMenu }) => {
   const navigate = useNavigate()
   const [showList, setShowList] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
@@ -51,6 +51,7 @@ export const Search = () => {
   }
 
   const triggerNavigate = (route) => {
+    closeMenu()
     navigate(`/pokemonDetails/${route}`)
   }
 

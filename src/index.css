@@ -13,14 +13,21 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  
 }
 
 /* Site gradient background */
 html {
   background-color: hsla(163, 0%, 96%, 1);
-  background-image: radial-gradient(circle at 37% 25%, hsla(166, 52%, 85%, 1) 6.688754566361296%, transparent 44.98438254159411%), radial-gradient(circle at 86% 50%, hsla(28, 52%, 85%, 1) 6.688754566361296%, transparent 44.98438254159411%);
+  background-image: radial-gradient(
+      circle at 37% 25%,
+      hsla(166, 52%, 85%, 1) 6.688754566361296%,
+      transparent 44.98438254159411%
+    ),
+    radial-gradient(
+      circle at 86% 50%,
+      hsla(28, 52%, 85%, 1) 6.688754566361296%,
+      transparent 44.98438254159411%
+    );
   background-blend-mode: color, color;
 }
 
@@ -71,4 +78,30 @@ a {
       transparent 134%
     );
   background-blend-mode: normal, normal, normal;
+}
+
+body {
+  --sb-track-color: transparent;
+  --sb-thumb-color: var(--primary);
+  --sb-size: 8px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
 }
