@@ -7,25 +7,32 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   background-color: transparent;
-  width: 10rem;
+  width: 90vw;
   height: 1rem;
   transition: border 0.3s, box-shadow 0.3s, width 0.3s;
 }
 .search input[type='text']:hover {
-  width: 20rem;
   border: 1px solid var(--primary);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 .search input[type='text']:focus {
-  width: 20rem;
   border: 1px solid var(--primary);
   outline: 1px solid var(--primary);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 .search input[type='text']:active {
-  width: 20rem;
   border: 1px solid var(--primary);
   outline: 1px solid var(--primary);
+}
+@media screen and (min-width: 768px) {
+  .search input[type='text'] {
+    width: 10rem;
+  }
+  .search input[type='text']:hover,
+  .search input[type='text']:focus,
+  .search input[type='text']:active {
+    width: 20rem;
+  }
 }
 
 .searchResults {
