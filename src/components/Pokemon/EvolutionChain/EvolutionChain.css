@@ -20,7 +20,14 @@
 .evolution-stage {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
+}
+
+.evolution-stage a {
+  display: flex;
+  justify-content: center;
 }
 
 .evolution-pokemon {

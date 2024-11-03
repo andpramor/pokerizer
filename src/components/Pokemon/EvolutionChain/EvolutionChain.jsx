@@ -5,9 +5,6 @@ import { SPRITE_IMG } from '../../../services/constants.js'
 import { Link } from 'react-router-dom'
 
 export const EvolutionChain = ({ evolution }) => {
-  // ! The map throws the unique key warning, check
-  // TODO: handle evolution triggers, for now only handled level up and item use cases.
-
   return (
     <section className='evolution-container'>
       <h2>Evolution</h2>
