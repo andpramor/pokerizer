@@ -89,6 +89,12 @@
   }
 }
 
+.details-addToFavs,
+.details-addToTeam select,
+.details-addToTeam button {
+  color: inherit;
+}
+
 .details-addToFavs {
   height: fit-content;
 }
