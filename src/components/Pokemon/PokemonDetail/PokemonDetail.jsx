@@ -40,16 +40,18 @@ export const PokemonDetail = () => {
               <i className='bi bi-heart' /> Remove from Favs
             </button>
             <form onSubmit={handleSubmit} className='details-addToTeam'>
-              <h3>Add to</h3>
-              <select>
-                <option value='1'>Team 1</option>
-                <option value='2' disabled>
-                  Team 2
-                </option>
-                <option value='3' disabled>
-                  Team 3
-                </option>
-              </select>
+              <span>Add to</span>
+              <div className='details-teamSelect'>
+                <select>
+                  <option value='1'>Team 1</option>
+                  <option value='2' disabled>
+                    Team 2
+                  </option>
+                  <option value='3' disabled>
+                    Team 3
+                  </option>
+                </select>
+              </div>
               <button type='submit'>Confirm</button>
             </form>
           </section>

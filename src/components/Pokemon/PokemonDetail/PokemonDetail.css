@@ -109,6 +109,25 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.details-teamSelect {
+  position: relative;
+  display: inline-block;
+}
+
+.details-teamSelect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0.5rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-image: url('../../../assets/dropdown.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
 .details-addToTeam select,
 .details-addToTeam button,
 .details-addToFavs {
@@ -118,7 +137,14 @@
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.2);
   transition: border-color 0.3s;
+  font-size: 1rem;
 }
+
+.details-addToTeam select {
+  appearance: none;
+  padding-right: 1.5rem;
+}
+
 .details-addToTeam button {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
