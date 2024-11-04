@@ -51,6 +51,7 @@ export const PokemonDetail = () => {
                     Team 3
                   </option>
                 </select>
+                <i className="bi bi-arrow-down-circle teamSelect-arrow" />
               </div>
               <button type='submit'>Confirm</button>
             </form>
