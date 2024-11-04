@@ -10,6 +10,8 @@
 
 .footer-links {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 .footer-links a {
