@@ -33,34 +33,38 @@ export const Header = () => {
         <i className='bi bi-list burger-icon' />
         <i className='bi bi-x-lg burger-close' />
       </label>
-      <section className='header-navigation'>
-        <nav aria-label='Main navigation'>
-          <ul className='header-links'>
-            <li>
-              <Search closeMenu={() => setIsMenuOpen(false)} />
-            </li>
-            <li onClick={handleRandom} className='header-link'>
-              Random Pokémon
-            </li>
-            <li>
-              <Link to='/pokedex' onClick={() => setIsMenuOpen(false)}>Your Pokedex</Link>
-            </li>
-          </ul>
-        </nav>
-        <nav aria-label='About and authentication related navigation'>
-          <ul className='user-links'>
-            <li style={{ display: 'none' }}>
-              <Link to='/login' onClick={() => setIsMenuOpen(false)}>Log in/out</Link>
-            </li>
-            <li style={{ display: 'none' }}>
-              <Link to='/singup' onClick={() => setIsMenuOpen(false)}>Sign up</Link>
-            </li>
-            <li>
-              <Link to='/about' onClick={() => setIsMenuOpen(false)}>ABOUT</Link>
-            </li>
-          </ul>
-        </nav>
-      </section>
+      <nav aria-label='Main site navigation' className='header-navigation'>
+        <ul className='header-links'>
+          <li>
+            <Search closeMenu={() => setIsMenuOpen(false)} />
+          </li>
+          <li onClick={handleRandom} className='header-link'>
+            RANDOM POKÉMON
+          </li>
+          <li>
+            <Link to='/pokedex' onClick={() => setIsMenuOpen(false)}>
+              POKÉDEX
+            </Link>
+          </li>
+        </ul>
+        <ul className='user-links'>
+          <li style={{ display: 'none' }}>
+            <Link to='/login' onClick={() => setIsMenuOpen(false)}>
+              Log in/out
+            </Link>
+          </li>
+          <li style={{ display: 'none' }}>
+            <Link to='/singup' onClick={() => setIsMenuOpen(false)}>
+              Sign up
+            </Link>
+          </li>
+          <li>
+            <Link to='/about' onClick={() => setIsMenuOpen(false)}>
+              ABOUT
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   )
 }
