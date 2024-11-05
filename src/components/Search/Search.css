@@ -7,7 +7,7 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   background-color: transparent;
-  width: 90vw;
+  width: 80vw;
   height: 1rem;
   transition: border 0.3s, box-shadow 0.3s, width 0.3s;
 }

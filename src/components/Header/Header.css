@@ -34,29 +34,29 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100dvh;
+  min-height: 100dvh;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
   background-color: white;
+  padding: 4rem 0;
+  box-sizing: border-box;
 
   transform: translateX(-100%);
   transition: transform 0.3s;
 
-  display: flex;
 }
 @media screen and (min-width: 768px) {
   .header .header-navigation {
-    display: flex;
     position: unset;
     top: unset;
     left: unset;
     background-color: unset;
     width: unset;
-    height: unset;
+    min-height: unset;
     transform: unset;
     transition: unset;
     padding: 0.5rem 0;
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
