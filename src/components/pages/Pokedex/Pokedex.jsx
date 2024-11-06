@@ -63,94 +63,112 @@ export const Pokedex = () => {
 
   return (
     <div className='pokedex'>
-    <h1 className='pokedex-name bg-blue-gradient'>
-      {POKEDEXES[pokedex].name} Pokédex
-    </h1>
-    <p style={{ display: 'none' }}>Seen: x / 1025. Got: y / 1025.</p>
-    <section className='pokedex-filters'>
-      <label
-        className='game-selection'
-        htmlFor='game-selection'
-        aria-label='Game selection'
-      >
-        <span style={{ display: 'none' }}>Pokédex</span>{' '}
-        <select
-          name='game-selection'
-          value={pokedex}
-          onChange={handlePokedexSelection}
+      <h1 className='pokedex-name bg-blue-gradient'>
+        {POKEDEXES[pokedex].name} Pokédex
+      </h1>
+      <p style={{ display: 'none' }}>Seen: x / 1025. Got: y / 1025.</p>
+      <section className='pokedex-filters'>
+        <label
+          className='game-selection'
+          htmlFor='game-selection'
+          aria-label='Game selection'
         >
-          {Object.keys(POKEDEXES).map((dex) => (
-            <option key={dex} value={dex}>
-              {POKEDEXES[dex].name}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label htmlFor='pokedex-type' aria-label='Filter by type'>
-        <span style={{ display: 'none' }}>Type</span>{' '}
-        <select
-          name='pokedex-type'
-          value={selectedType}
-          onChange={handleTypeSelection}
-        >
-          <option value=''>All types</option>
-          {TYPES.filter((type) => type !== 'stellar').map((type) => (
-            <option key={type} value={type}>
-              {type.charAt(0).toUpperCase().concat(type.slice(1))} type
-            </option>
-          ))}
-        </select>
-      </label>
-      <input
-        type='text'
-        name='pokedex-search'
-        value={searchTerm}
-        onChange={handleSearchChange}
-        placeholder='Search'
-        aria-label='Search Pokémon'
-      />
-      <div className='collection-state'>
-        <label htmlFor='any-collection-state'>
-          <input
-            type='radio'
-            name='any-collection-state'
-            id='any-collection-state'
-            value='any'
-            checked={collectionState === 'any'}
-            onChange={handleCollectionState}
-            style={{ display: 'none' }}
-          />
-          {collectionState === 'any' ? <i className='bi bi-check-circle' /> : <i className='bi bi-circle' />}
-          <span>All</span>
+          <span style={{ display: 'none' }}>Pokédex</span>{' '}
+          <div className='pokedex-select'>
+            <select
+              name='game-selection'
+              value={pokedex}
+              onChange={handlePokedexSelection}
+            >
+              {Object.keys(POKEDEXES).map((dex) => (
+                <option key={dex} value={dex}>
+                  {POKEDEXES[dex].name}
+                </option>
+              ))}
+            </select>
+            <i className='bi bi-chevron-down pokedexSelect-arrow' />
+          </div>
         </label>
-        <label htmlFor='seen-collection-state'>
-          <input
-            type='radio'
-            name='seen-collection-state'
-            id='seen-collection-state'
-            value='seen'
-            checked={collectionState === 'seen'}
-            onChange={handleCollectionState}
-            style={{ display: 'none' }}
-          />
-          {collectionState === 'seen' ? <i className='bi bi-check-circle' /> : <i className='bi bi-circle' />}
-          <span>Seen</span>
+        <label htmlFor='pokedex-type' aria-label='Filter by type'>
+          <span style={{ display: 'none' }}>Type</span>{' '}
+          <div className='pokedex-select'>
+            <select
+              name='pokedex-type'
+              value={selectedType}
+              onChange={handleTypeSelection}
+            >
+              <option value=''>All types</option>
+              {TYPES.filter((type) => type !== 'stellar').map((type) => (
+                <option key={type} value={type}>
+                  {type.charAt(0).toUpperCase().concat(type.slice(1))} type
+                </option>
+              ))}
+            </select>
+            <i className='bi bi-chevron-down pokedexSelect-arrow' />
+          </div>
         </label>
-        <label htmlFor='captured-collection-state'>
-          <input
-            type='radio'
-            name='captured-collection-state'
-            id='captured-collection-state'
-            value='captured'
-            checked={collectionState === 'captured'}
-            onChange={handleCollectionState}
-            style={{ display: 'none' }}
-          />
-          {collectionState === 'captured' ? <i className='bi bi-check-circle' /> : <i className='bi bi-circle' />}
-          <span>Captured</span>
-        </label>
-      </div>
-    </section>
+        <input
+          type='text'
+          name='pokedex-search'
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder='Search'
+          aria-label='Search Pokémon'
+        />
+        <div className='collection-state'>
+          <label htmlFor='any-collection-state'>
+            <input
+              type='radio'
+              name='any-collection-state'
+              id='any-collection-state'
+              value='any'
+              checked={collectionState === 'any'}
+              onChange={handleCollectionState}
+              style={{ display: 'none' }}
+            />
+            {collectionState === 'any' ? (
+              <i className='bi bi-check-circle' />
+            ) : (
+              <i className='bi bi-circle' />
+            )}
+            <span>All</span>
+          </label>
+          <label htmlFor='seen-collection-state'>
+            <input
+              type='radio'
+              name='seen-collection-state'
+              id='seen-collection-state'
+              value='seen'
+              checked={collectionState === 'seen'}
+              onChange={handleCollectionState}
+              style={{ display: 'none' }}
+            />
+            {collectionState === 'seen' ? (
+              <i className='bi bi-check-circle' />
+            ) : (
+              <i className='bi bi-circle' />
+            )}
+            <span>Seen</span>
+          </label>
+          <label htmlFor='captured-collection-state'>
+            <input
+              type='radio'
+              name='captured-collection-state'
+              id='captured-collection-state'
+              value='captured'
+              checked={collectionState === 'captured'}
+              onChange={handleCollectionState}
+              style={{ display: 'none' }}
+            />
+            {collectionState === 'captured' ? (
+              <i className='bi bi-check-circle' />
+            ) : (
+              <i className='bi bi-circle' />
+            )}
+            <span>Captured</span>
+          </label>
+        </div>
+      </section>
       {loading ? (
         <div className='loader' />
       ) : (

@@ -36,6 +36,7 @@
   border-radius: 0.5rem;
   border: 1px solid black;
   background-color: transparent;
+  color: inherit;
 }
 
 .pokedex-filters input[type='text'] {
@@ -91,4 +92,25 @@
 .pokedex .pokedex-pagination i:hover {
   color: var(--primary);
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.pokedex-select {
+  position: relative;
+}
+.pokedex-select select {
+  appearance: none;
+  padding-right: 3rem;
+}
+.pokedexSelect-arrow {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.3s;
+  pointer-events: none;
+}
+.pokedex-select:hover .pokedexSelect-arrow {
+  color: var(--primary);
 }

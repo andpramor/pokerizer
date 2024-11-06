@@ -115,12 +115,13 @@
 
 .teamSelect-arrow {
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.5);
   position: absolute;
   right: 0.5rem;
   top: 50%;
   transform: translateY(-50%);
   transition: color 0.3s;
+  pointer-events: none;
 }
 .details-teamSelect:hover .teamSelect-arrow {
   color: var(--primary);
