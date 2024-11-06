@@ -32,18 +32,24 @@ export const Pokedex = () => {
   const handleNextPage = () => {
     if (currentPage < Math.ceil(filteredList.length / itemsPerPage)) {
       setCurrentPage((prevPage) => prevPage + 1)
+      window.scrollTo({ top: 0 })
     }
   }
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       setCurrentPage((prevPage) => prevPage - 1)
+      window.scrollTo({ top: 0 })
     }
   }
 
-  const handleFirstPage = () => setCurrentPage(1)
+  const handleFirstPage = () => {
+    setCurrentPage(1)
+    window.scrollTo({ top: 0 })
+  }
   const handleLastPage = () => {
     setCurrentPage(Math.ceil(filteredList.length / itemsPerPage))
+    window.scrollTo({ top: 0 })
   }
 
   const handlePokedexSelection = (event) => {
