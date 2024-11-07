@@ -9,13 +9,22 @@ import { useState } from 'react'
 export const PokemonCard = ({ pokemon }) => {
   const [correct, setCorrect] = useState(true) // Used to display Missingno in case the sprite load throws an error.
   const [seen, setSeen] = useState(false)
-  const [captured, setCaptured] = useState(false) // Captured implies seen too
+  const [caught, setCaught] = useState(false) // Captured implies seen too
 
-  const handleCapturedChange = () => {
-    if (captured) setCaptured(false)
+  const handleSeenChange = () => {
+    if (seen) {
+      setSeen(false)
+      setCaught(false)
+    } else {
+      setSeen(true)
+    }
+  }
+
+  const handleCaughtChange = () => {
+    if (caught) setCaught(false)
     else {
       setSeen(true)
-      setCaptured(true)
+      setCaught(true)
     }
   }
 
@@ -54,7 +63,7 @@ export const PokemonCard = ({ pokemon }) => {
             name={`${pokemon.id}seenCheckbox`}
             id={`${pokemon.id}seenCheckbox`}
             value={seen}
-            onChange={() => setSeen(!seen)}
+            onChange={handleSeenChange}
           />
           {seen ? (
             <i className='bi bi-check-square' />
@@ -63,20 +72,20 @@ export const PokemonCard = ({ pokemon }) => {
           )}{' '}
           <span>Seen</span>
         </label>
-        <label htmlFor={`${pokemon.id}capturedCheckbox`}>
+        <label htmlFor={`${pokemon.id}caughtCheckbox`}>
           <input
             type='checkbox'
-            name={`${pokemon.id}capturedCheckbox`}
-            id={`${pokemon.id}capturedCheckbox`}
-            value={captured}
-            onChange={handleCapturedChange}
+            name={`${pokemon.id}caughtCheckbox`}
+            id={`${pokemon.id}caughtCheckbox`}
+            value={caught}
+            onChange={handleCaughtChange}
           />
-          {captured ? (
+          {caught ? (
             <i className='bi bi-check-square' />
           ) : (
             <i className='bi bi-square' />
           )}{' '}
-          <span>Captured</span>
+          <span>Caught</span>
         </label>
       </div>
     </article>

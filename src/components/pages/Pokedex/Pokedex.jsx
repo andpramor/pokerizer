@@ -150,22 +150,56 @@ export const Pokedex = () => {
             )}
             <span>Seen</span>
           </label>
-          <label htmlFor='captured-collection-state'>
+          <label htmlFor='unseen-collection-state'>
             <input
               type='radio'
-              name='captured-collection-state'
-              id='captured-collection-state'
-              value='captured'
-              checked={collectionState === 'captured'}
+              name='unseen-collection-state'
+              id='unseen-collection-state'
+              value='unseen'
+              checked={collectionState === 'unseen'}
               onChange={handleCollectionState}
               style={{ display: 'none' }}
             />
-            {collectionState === 'captured' ? (
+            {collectionState === 'unseen' ? (
               <i className='bi bi-check-circle' />
             ) : (
               <i className='bi bi-circle' />
             )}
-            <span>Captured</span>
+            <span>Unseen</span>
+          </label>
+          <label htmlFor='caught-collection-state'>
+            <input
+              type='radio'
+              name='caught-collection-state'
+              id='caught-collection-state'
+              value='caught'
+              checked={collectionState === 'caught'}
+              onChange={handleCollectionState}
+              style={{ display: 'none' }}
+            />
+            {collectionState === 'caught' ? (
+              <i className='bi bi-check-circle' />
+            ) : (
+              <i className='bi bi-circle' />
+            )}
+            <span>Caught</span>
+          </label>
+          <label htmlFor='uncaught-collection-state'>
+            <input
+              type='radio'
+              name='uncaught-collection-state'
+              id='uncaught-collection-state'
+              value='uncaught'
+              checked={collectionState === 'uncaught'}
+              onChange={handleCollectionState}
+              style={{ display: 'none' }}
+            />
+            {collectionState === 'uncaught' ? (
+              <i className='bi bi-check-circle' />
+            ) : (
+              <i className='bi bi-circle' />
+            )}
+            <span>Uncaught</span>
           </label>
         </div>
       </section>
