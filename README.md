@@ -18,4 +18,4 @@ In this project, I use the PokeAPI to fetch Pokémon data to build teams, favour
 - [ ] Mark a pokémon as favourite
 - [ ] Build a pokémon team (Max 6 pokémon)
 - [ ] Build more than one team
-- [ ] Persistence (favourites list, teams, seen, caught). First in localStorage and latter in a propper database, maybe firebase
+- [ ] Persistence (favourites list, teams, seen, caught), using both localStorage and Django backend
