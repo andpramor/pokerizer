@@ -54,6 +54,7 @@ export const Pokedex = () => {
 
   const handlePokedexSelection = (event) => {
     setPokedex(event.target.value)
+    setCurrentPage(1)
     handlePokedexChange()
   }
 
